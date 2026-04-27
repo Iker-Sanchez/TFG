@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000">
+
+    <!-- ===== CABECERA ===== -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#E2001A"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:src="@android:drawable/ic_menu_revert"
+            android:tint="#FFFFFF"
+            android:contentDescription="Atrás" />
+
+        <TextView
+            android:id="@+id/txtNombreEquipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="ESTADÍSTICAS"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:text="EA\nSPORTS"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/bg_ea_badge"
+            android:padding="6dp" />
+
+    </RelativeLayout>
+
+    <!-- ===== ESCUDO + NOMBRE ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#111111">
+
+        <ImageView
+            android:id="@+id/imgEscudoEquipo"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Escudo" />
+
+        <TextView
+            android:id="@+id/txtNombreCompleto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FC Barcelona"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginTop="6dp" />
+
+    </LinearLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+        android:background="#333333" />
+
+    <!-- ===== CONTENIDO SCROLLABLE ===== -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- FORMA RECIENTE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.1"
+                android:text="FORMA RECIENTE"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutForma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp" />
+
+            <!-- TARJETA: RESULTADOS GENERALES -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RESULTADOS"
+                android:textColor="#FFFFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#111111"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <!-- Fila: PJ / V / E / D -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/txtPJ"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="PJ" android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/txtV"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#4CAF50" android:textSize="22sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="V" android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/txtE"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#FFC107" android:textSize="22sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="E" android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/txtD"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#F44336" android:textSize="22sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="D" android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="#222222" android:layout_marginBottom="12dp"/>
+
+                <!-- Fila: GF / GC / DG / % Victorias -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/txtGF"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Goles F." android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/txtGC"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Goles C." android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/txtDG"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Dif. Goles" android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/txtPctVictorias"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="0%" android:textColor="#4FC3F7" android:textSize="18sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="% Victorias" android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- TARJETA: LOCAL vs VISITANTE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.1"
+                android:text="LOCAL / VISITANTE"
+                android:textColor="#FFFFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#111111"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <!-- Local -->
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="EN CASA" android:textColor="#AAAAAA" android:textSize="11sp"
+                        android:gravity="center" android:layout_marginBottom="8dp"/>
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center">
+                        <TextView android:id="@+id/txtVLocal" android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#4CAF50" android:textSize="16sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="-" android:textColor="#555555" android:textSize="16sp" android:gravity="center"/>
+                        <TextView android:id="@+id/txtELocal" android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#FFC107" android:textSize="16sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="-" android:textColor="#555555" android:textSize="16sp" android:gravity="center"/>
+                        <TextView android:id="@+id/txtDLocal" android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#F44336" android:textSize="16sp" android:textStyle="bold" android:gravity="center"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center" android:layout_marginTop="4dp">
+                        <TextView android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="V" android:textColor="#666666" android:textSize="10sp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text=" " android:textSize="10sp"/>
+                        <TextView android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="E" android:textColor="#666666" android:textSize="10sp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text=" " android:textSize="10sp"/>
+                        <TextView android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="D" android:textColor="#666666" android:textSize="10sp" android:gravity="center"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Divisor vertical -->
+                <View android:layout_width="1dp" android:layout_height="match_parent"
+                    android:background="#333333" android:layout_marginStart="8dp" android:layout_marginEnd="8dp"/>
+
+                <!-- Visitante -->
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="FUERA" android:textColor="#AAAAAA" android:textSize="11sp"
+                        android:gravity="center" android:layout_marginBottom="8dp"/>
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center">
+                        <TextView android:id="@+id/txtVVisitante" android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#4CAF50" android:textSize="16sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="-" android:textColor="#555555" android:textSize="16sp" android:gravity="center"/>
+                        <TextView android:id="@+id/txtEVisitante" android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#FFC107" android:textSize="16sp" android:textStyle="bold" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="-" android:textColor="#555555" android:textSize="16sp" android:gravity="center"/>
+                        <TextView android:id="@+id/txtDVisitante" android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="#F44336" android:textSize="16sp" android:textStyle="bold" android:gravity="center"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center" android:layout_marginTop="4dp">
+                        <TextView android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="V" android:textColor="#666666" android:textSize="10sp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text=" " android:textSize="10sp"/>
+                        <TextView android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="E" android:textColor="#666666" android:textSize="10sp" android:gravity="center"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text=" " android:textSize="10sp"/>
+                        <TextView android:layout_width="32dp" android:layout_height="wrap_content"
+                            android:text="D" android:textColor="#666666" android:textSize="10sp" android:gravity="center"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- TARJETA: MEDIAS -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.1"
+                android:text="MEDIAS POR PARTIDO"
+                android:textColor="#FFFFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#111111"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/txtMediaGF"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0.0" android:textColor="#FFFFFF" android:textSize="20sp"
+                        android:textStyle="bold" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Goles marcados" android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/txtMediaGC"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0.0" android:textColor="#FFFFFF" android:textSize="20sp"
+                        android:textStyle="bold" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Goles recibidos" android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- TARJETA: DISCIPLINA -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.1"
+                android:text="DISCIPLINA"
+                android:textColor="#FFFFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#111111"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/txtAmarillas"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textColor="#FFC107" android:textSize="22sp"
+                        android:textStyle="bold" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="🟨 Amarillas" android:textColor="#AAAAAA" android:textSize="12sp" android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/txtRojas"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textColor="#F44336" android:textSize="22sp"
+                        android:textStyle="bold" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="🟥 Rojas" android:textColor="#AAAAAA" android:textSize="12sp" android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/txtPenaltis"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textColor="#FFFFFF" android:textSize="22sp"
+                        android:textStyle="bold" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Penaltis" android:textColor="#AAAAAA" android:textSize="12sp" android:gravity="center"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- TARJETA: RACHAS -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.1"
+                android:text="RACHAS"
+                android:textColor="#FFFFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#111111"
+                android:padding="16dp"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/txtMaxVictorias"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textColor="#4CAF50" android:textSize="22sp"
+                        android:textStyle="bold" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Máx. victorias" android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/txtMaxSinPerder"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textColor="#4FC3F7" android:textSize="22sp"
+                        android:textStyle="bold" android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Sin perder" android:textColor="#AAAAAA" android:textSize="11sp" android:gravity="center"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+</LinearLayout>

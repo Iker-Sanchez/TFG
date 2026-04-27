@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000">
+
+    <!-- CABECERA -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#E2001A"
+        android:padding="12dp">
+
+        <ImageView android:id="@+id/btnBack"
+            android:layout_width="32dp" android:layout_height="32dp"
+            android:layout_centerVertical="true" android:layout_alignParentStart="true"
+            android:src="@android:drawable/ic_menu_revert" android:tint="#FFFFFF"
+            android:contentDescription="Atrás"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_centerInParent="true" android:text="ESTADÍSTICAS"
+            android:textColor="#FFFFFF" android:textSize="20sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-black"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_centerVertical="true" android:layout_alignParentEnd="true"
+            android:text="EA\nSPORTS" android:textColor="#FFFFFF" android:textSize="10sp"
+            android:textStyle="bold" android:gravity="center"
+            android:background="@drawable/bg_ea_badge" android:padding="6dp"/>
+    </RelativeLayout>
+
+    <!-- ESCUDOS + RESULTADO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#111111">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <ImageView android:id="@+id/imgEscudoLocal"
+                android:layout_width="56dp" android:layout_height="56dp"
+                android:scaleType="fitCenter" android:contentDescription="Local"/>
+            <TextView android:id="@+id/txtNombreLocal"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold"
+                android:gravity="center" android:maxLines="1" android:ellipsize="end"
+                android:layout_marginTop="4dp" android:paddingStart="8dp" android:paddingEnd="8dp"/>
+        </LinearLayout>
+
+        <TextView android:id="@+id/txtResultado"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textColor="#FFFFFF" android:textSize="32sp" android:textStyle="bold"
+            android:paddingStart="16dp" android:paddingEnd="16dp"/>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <ImageView android:id="@+id/imgEscudoVisitante"
+                android:layout_width="56dp" android:layout_height="56dp"
+                android:scaleType="fitCenter" android:contentDescription="Visitante"/>
+            <TextView android:id="@+id/txtNombreVisitante"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold"
+                android:gravity="center" android:maxLines="1" android:ellipsize="end"
+                android:layout_marginTop="4dp" android:paddingStart="8dp" android:paddingEnd="8dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+        android:background="#333333"/>
+
+    <!-- ESTADÍSTICAS — filas creadas programáticamente -->
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="#000000">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+
+            <LinearLayout android:id="@+id/contenedorStats"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="#111111"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -244,12 +244,12 @@ app.get("/estadisticas-partido/:fixtureId", async (req, res) => {
 });
 
 // ── Once probable de un equipo ─────────────────────────────────
-// GET /once-probable/:leagueId/:teamId
-// Devuelve: { equipo, formacion, jugadores: [{nombre, numero, posicion, minutos}] }
-app.get("/once-probable/:leagueId/:teamId", async (req, res) => {
-    const { leagueId, teamId } = req.params;
+// GET /once-probable/:leagueId/:teamId/:fixtureId
+// Devuelve: { formacion, jugadores: [{id, nombre, numero, posicion, minutos, foto, baja}] }
+app.get("/once-probable/:leagueId/:teamId/:fixtureId", async (req, res) => {
+    const { leagueId, teamId, fixtureId } = req.params;
     try {
-        // 1. Obtener la formación más usada desde las estadísticas del equipo
+        // 1. Obtener la formación más usada
         let formacion = "4-3-3";
         try {
             const statsData = await llamarApiFootball(
@@ -257,12 +257,28 @@ app.get("/once-probable/:leagueId/:teamId", async (req, res) => {
             );
             const lineups = statsData?.response?.lineups ?? [];
             if (lineups.length > 0) {
-                // La primera es la más usada
                 formacion = lineups.sort((a, b) => b.played - a.played)[0].formation;
             }
         } catch (e) { console.log("⚠️  No se pudo obtener formación:", e.message); }
 
-        // 2. Obtener jugadores ordenados por minutos jugados
+        // 2. Obtener lesionados/sancionados para este fixture
+        const idsNoDisponibles = new Set();
+        try {
+            const injuriesData = await llamarApiFootball(
+                `/injuries?fixture=${fixtureId}&season=${SEASON}`
+            );
+            if (injuriesData?.response?.length) {
+                injuriesData.response.forEach(item => {
+                    // Solo los de este equipo
+                    if (String(item.team?.id) === String(teamId)) {
+                        idsNoDisponibles.add(item.player?.id);
+                    }
+                });
+            }
+            console.log(`🚑 Bajas equipo ${teamId}: ${[...idsNoDisponibles].join(", ") || "ninguna"}`);
+        } catch (e) { console.log("⚠️  No se pudo obtener lesionados:", e.message); }
+
+        // 3. Obtener jugadores ordenados por minutos jugados
         const playersData = await llamarApiFootball(
             `/players?team=${teamId}&season=${SEASON}&league=${leagueId}`
         );
@@ -302,23 +318,32 @@ app.get("/once-probable/:leagueId/:teamId", async (req, res) => {
             .filter(p => p.minutos > 0)
             .sort((a, b) => b.titular - a.titular || b.minutos - a.minutos);
 
-        // Seleccionar 11 jugadores respetando posiciones según la formación
-        const [def, med, del_] = formacion.split("-").map(Number);
-        const porteros   = todos.filter(p => p.posicion === "G").slice(0, 1);
-        const defensas   = todos.filter(p => p.posicion === "D").slice(0, def);
-        const medios     = todos.filter(p => p.posicion === "M").slice(0, med);
-        const delanteros = todos.filter(p => p.posicion === "F").slice(0, del_);
+        // Separar disponibles y no disponibles
+        const disponibles   = todos.filter(p => !idsNoDisponibles.has(p.id));
+        const noDisponibles = todos.filter(p => idsNoDisponibles.has(p.id));
 
-        // Si faltan jugadores en alguna posición, rellenar con los que más juegan
+        // Seleccionar 11 jugadores respetando posiciones (solo disponibles)
+        const lineasNum = formacion.split("-").map(Number);
+        const def = lineasNum[0] ?? 4;
+        const med = lineasNum.slice(1, -1).reduce((a, b) => a + b, 0);
+        const del_ = lineasNum[lineasNum.length - 1] ?? 3;
+
+        const porteros   = disponibles.filter(p => p.posicion === "G").slice(0, 1);
+        const defensas   = disponibles.filter(p => p.posicion === "D").slice(0, def);
+        const medios     = disponibles.filter(p => p.posicion === "M").slice(0, med);
+        const delanteros = disponibles.filter(p => p.posicion === "F").slice(0, del_);
+
         let once = [...porteros, ...defensas, ...medios, ...delanteros];
+
+        // Si faltan jugadores, rellenar con disponibles del mismo rol
         if (once.length < 11) {
-            const ids = new Set(once.map(p => p.nombre));
-            const resto = todos.filter(p => !ids.has(p.nombre));
+            const idsOnce = new Set(once.map(p => p.id));
+            const resto = disponibles.filter(p => !idsOnce.has(p.id));
             once = [...once, ...resto].slice(0, 11);
         }
 
-        console.log(`👕 Once ${teamId}: ${once.length} jugadores, formación ${formacion}`);
-        res.json({ formacion, jugadores: once.slice(0, 11) });
+        console.log(`👕 Once ${teamId}: ${once.length} jugadores disponibles, ${idsNoDisponibles.size} bajas, formación ${formacion}`);
+        res.json({ formacion, jugadores: once.slice(0, 11), bajas: noDisponibles });
 
     } catch (err) {
         console.error(`❌ /once-probable/${leagueId}/${teamId}:`, err.message);
@@ -404,6 +429,42 @@ app.get("/estadisticas-jugador/:playerId/:leagueId", async (req, res) => {
     } catch (err) {
         console.error(`❌ /estadisticas-jugador/${playerId}/${leagueId}:`, err.message);
         res.status(500).json({ error: err.message });
+    }
+});
+
+
+// ── Búsqueda de jugadores por nombre ──────────────────────────
+// GET /buscar-jugadores/:nombre/:season
+app.get("/buscar-jugadores/:nombre", async (req, res) => {
+    const { nombre } = req.params;
+    try {
+        const data = await llamarApiFootball(
+            `/players?search=${encodeURIComponent(nombre)}&season=${SEASON}`
+        );
+
+        if (!data?.response?.length) return res.json({ jugadores: [] });
+
+        // Deduplicar por id de jugador (la API puede devolver duplicados)
+        const vistos = new Set();
+        const jugadores = data.response
+            .filter(p => {
+                if (vistos.has(p.player?.id)) return false;
+                vistos.add(p.player?.id);
+                return true;
+            })
+            .slice(0, 10)
+            .map(p => ({
+                id:          p.player?.id    ?? 0,
+                nombre:      p.player?.name  ?? "",
+                equipo:      p.statistics?.[0]?.team?.name ?? "Sin equipo",
+                foto:        p.player?.photo ?? "",
+                escudoEquipo: p.statistics?.[0]?.team?.logo ?? ""
+            }));
+
+        res.json({ jugadores });
+    } catch (err) {
+        console.error(`❌ /buscar-jugadores/${nombre}:`, err.message);
+        res.json({ jugadores: [] });
     }
 });
 
