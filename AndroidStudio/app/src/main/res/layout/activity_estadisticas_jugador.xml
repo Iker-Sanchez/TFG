@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     android:id="@+id/rootEstadisticasJugador"
+=======
+>>>>>>> 9fa90aba5b4448f5c142f03d970a87a0aed0c36f
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#000000">
 
+<<<<<<< HEAD
     <RelativeLayout
         android:id="@+id/headerEstadisticasJugador"
         android:layout_width="match_parent"
@@ -330,6 +334,243 @@
 
         </LinearLayout>
 
+=======
+    <!-- CABECERA -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#E2001A"
+        android:padding="12dp">
+
+        <ImageView android:id="@+id/btnBack"
+            android:layout_width="32dp" android:layout_height="32dp"
+            android:layout_centerVertical="true" android:layout_alignParentStart="true"
+            android:src="@android:drawable/ic_menu_revert" android:tint="#FFFFFF"
+            android:contentDescription="Atrás"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_centerInParent="true" android:text="JUGADOR"
+            android:textColor="#FFFFFF" android:textSize="20sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-black"/>
+
+        <!-- Botón comparar (a la izquierda del badge EA) -->
+        <ImageView
+            android:id="@+id/btnComparar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/badgeEA"
+            android:layout_marginEnd="8dp"
+            android:src="@android:drawable/ic_menu_share"
+            android:tint="#FFFFFF"
+            android:alpha="0.4"
+            android:contentDescription="Comparar jugadores"/>
+
+        <TextView
+            android:id="@+id/badgeEA"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_centerVertical="true" android:layout_alignParentEnd="true"
+            android:text="EA\nSPORTS" android:textColor="#FFFFFF" android:textSize="10sp"
+            android:textStyle="bold" android:gravity="center"
+            android:background="@drawable/bg_ea_badge" android:padding="6dp"/>
+    </RelativeLayout>
+
+    <!-- PERFIL DEL JUGADOR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#111111"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Escudo equipo pequeño + foto jugador grande -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView android:id="@+id/imgFotoJugador"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Foto jugador"/>
+
+            <ImageView android:id="@+id/imgEscudoEquipo"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="bottom|start"
+                android:scaleType="fitCenter"
+                android:contentDescription="Escudo"/>
+        </FrameLayout>
+
+        <!-- Info jugador -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="16dp">
+
+            <TextView android:id="@+id/txtNombreJugador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="6dp"/>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginBottom="4dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Pos: " android:textColor="#AAAAAA" android:textSize="13sp"/>
+                <TextView android:id="@+id/txtPosicion"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF" android:textSize="13sp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginBottom="4dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Edad: " android:textColor="#AAAAAA" android:textSize="13sp"/>
+                <TextView android:id="@+id/txtEdad"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF" android:textSize="13sp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Nac: " android:textColor="#AAAAAA" android:textSize="13sp"/>
+                <TextView android:id="@+id/txtNacionalidad"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF" android:textSize="13sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Valoración -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView android:id="@+id/txtValoracion"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:background="#E2001A"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Media" android:textColor="#AAAAAA" android:textSize="11sp"
+                android:gravity="center" android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+        android:background="#333333"/>
+
+    <!-- ESTADÍSTICAS SCROLL -->
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="#000000">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+
+            <!-- PARTICIPACIÓN -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PARTICIPACIÓN"
+                android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:background="#111111"
+                android:padding="16dp" android:layout_marginBottom="16dp">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/txtPartidos"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"
+                        android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Partidos" android:textColor="#AAAAAA" android:textSize="11sp"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/txtTitularidades"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"
+                        android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Titular" android:textColor="#AAAAAA" android:textSize="11sp"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:id="@+id/txtMinutos"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"
+                        android:gravity="center"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Minutos" android:textColor="#AAAAAA" android:textSize="11sp"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ATAQUE -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="ATAQUE"
+                android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
+
+            <LinearLayout android:id="@+id/contenedorAtaque"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="#111111"
+                android:padding="16dp" android:layout_marginBottom="16dp"/>
+
+            <!-- PASES -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PASES"
+                android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
+
+            <LinearLayout android:id="@+id/contenedorPases"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="#111111"
+                android:padding="16dp" android:layout_marginBottom="16dp"/>
+
+            <!-- DUELOS Y REGATES -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="DUELOS Y REGATES"
+                android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
+
+            <LinearLayout android:id="@+id/contenedorDuelos"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="#111111"
+                android:padding="16dp" android:layout_marginBottom="16dp"/>
+
+            <!-- DISCIPLINA -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="DISCIPLINA"
+                android:textColor="#FFFFFF" android:textSize="11sp" android:textStyle="bold"
+                android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
+
+            <LinearLayout android:id="@+id/contenedorDisciplina"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="#111111"
+                android:padding="16dp" android:layout_marginBottom="24dp"/>
+
+        </LinearLayout>
+>>>>>>> 9fa90aba5b4448f5c142f03d970a87a0aed0c36f
     </ScrollView>
 
 </LinearLayout>

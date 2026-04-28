@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rootComparador"
     android:layout_width="match_parent"
@@ -165,3 +166,215 @@
     </LinearLayout>
 
 </ScrollView>
+=======
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000">
+
+    <!-- CABECERA -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#E2001A"
+        android:padding="12dp">
+
+        <ImageView android:id="@+id/btnBack"
+            android:layout_width="32dp" android:layout_height="32dp"
+            android:layout_centerVertical="true" android:layout_alignParentStart="true"
+            android:src="@android:drawable/ic_menu_revert" android:tint="#FFFFFF"
+            android:contentDescription="Atrás"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_centerInParent="true" android:text="COMPARADOR"
+            android:textColor="#FFFFFF" android:textSize="20sp" android:textStyle="bold"
+            android:fontFamily="sans-serif-black"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_centerVertical="true" android:layout_alignParentEnd="true"
+            android:text="EA\nSPORTS" android:textColor="#FFFFFF" android:textSize="10sp"
+            android:textStyle="bold" android:gravity="center"
+            android:background="@drawable/bg_ea_badge" android:padding="6dp"/>
+    </RelativeLayout>
+
+    <!-- BUSCADOR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#1A1A1A"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/etBuscarJugador"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:hint="Buscar jugador a comparar..."
+            android:textColorHint="#666666"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:background="#2A2A2A"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:inputType="textPersonName"
+            android:imeOptions="actionSearch"
+            android:maxLines="1"/>
+
+        <Button
+            android:id="@+id/btnBuscar"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="Buscar"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:backgroundTint="#E2001A"
+            android:layout_marginStart="8dp"
+            android:stateListAnimator="@null"/>
+    </LinearLayout>
+
+    <!-- RESULTADOS DE BÚSQUEDA (visible solo durante búsqueda) -->
+    <ListView
+        android:id="@+id/listResultados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1A1A1A"
+        android:visibility="gone"
+        android:divider="#2A2A2A"
+        android:dividerHeight="1dp"
+        android:maxHeight="200dp"/>
+
+    <!-- COMPARATIVA -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- CABECERA JUGADORES -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <!-- Jugador 1 -->
+                <LinearLayout
+                    android:id="@+id/cardJugador1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="#111111"
+                    android:padding="12dp"
+                    android:gravity="center"
+                    android:layout_marginEnd="6dp">
+
+                    <ImageView android:id="@+id/imgFoto1"
+                        android:layout_width="80dp" android:layout_height="80dp"
+                        android:scaleType="fitCenter" android:contentDescription="J1"/>
+
+                    <ImageView android:id="@+id/imgEscudo1"
+                        android:layout_width="24dp" android:layout_height="24dp"
+                        android:scaleType="fitCenter" android:layout_marginTop="4dp"
+                        android:contentDescription="Escudo1"/>
+
+                    <TextView android:id="@+id/txtNombre1"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"
+                        android:gravity="center" android:layout_marginTop="6dp"
+                        android:maxLines="2" android:ellipsize="end"/>
+
+                    <TextView android:id="@+id/txtPosicion1"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#AAAAAA" android:textSize="11sp"
+                        android:gravity="center" android:layout_marginTop="2dp"/>
+
+                    <TextView android:id="@+id/txtValoracion1"
+                        android:layout_width="48dp" android:layout_height="48dp"
+                        android:gravity="center" android:textColor="#FFFFFF"
+                        android:textSize="16sp" android:textStyle="bold"
+                        android:background="#E2001A" android:layout_marginTop="8dp"/>
+                </LinearLayout>
+
+                <!-- Jugador 2 -->
+                <LinearLayout
+                    android:id="@+id/cardJugador2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="#111111"
+                    android:padding="12dp"
+                    android:gravity="center"
+                    android:layout_marginStart="6dp">
+
+                    <!-- Placeholder cuando no hay jugador seleccionado -->
+                    <LinearLayout
+                        android:id="@+id/layoutPlaceholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="👤" android:textSize="40sp" android:gravity="center"/>
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Busca un jugador\npara comparar"
+                            android:textColor="#666666" android:textSize="12sp"
+                            android:gravity="center" android:layout_marginTop="8dp"/>
+                    </LinearLayout>
+
+                    <!-- Datos del jugador 2 (ocultos hasta seleccionar) -->
+                    <ImageView android:id="@+id/imgFoto2"
+                        android:layout_width="80dp" android:layout_height="80dp"
+                        android:scaleType="fitCenter" android:contentDescription="J2"
+                        android:visibility="gone"/>
+
+                    <ImageView android:id="@+id/imgEscudo2"
+                        android:layout_width="24dp" android:layout_height="24dp"
+                        android:scaleType="fitCenter" android:layout_marginTop="4dp"
+                        android:contentDescription="Escudo2" android:visibility="gone"/>
+
+                    <TextView android:id="@+id/txtNombre2"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold"
+                        android:gravity="center" android:layout_marginTop="6dp"
+                        android:maxLines="2" android:ellipsize="end" android:visibility="gone"/>
+
+                    <TextView android:id="@+id/txtPosicion2"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textColor="#AAAAAA" android:textSize="11sp"
+                        android:gravity="center" android:layout_marginTop="2dp"
+                        android:visibility="gone"/>
+
+                    <TextView android:id="@+id/txtValoracion2"
+                        android:layout_width="48dp" android:layout_height="48dp"
+                        android:gravity="center" android:textColor="#FFFFFF"
+                        android:textSize="16sp" android:textStyle="bold"
+                        android:background="#E2001A" android:layout_marginTop="8dp"
+                        android:visibility="gone"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ESTADÍSTICAS COMPARATIVAS (generadas programáticamente) -->
+            <LinearLayout android:id="@+id/contenedorComparativa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+>>>>>>> 9fa90aba5b4448f5c142f03d970a87a0aed0c36f
