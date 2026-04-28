@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000">
+
+    <!-- ===== CABECERA LALIGA ===== -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#E2001A"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:src="@android:drawable/ic_menu_revert"
+            android:contentDescription="Atrás"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="LALIGA"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:text="EA\nSPORTS"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/bg_ea_badge"
+            android:padding="6dp" />
+
+    </RelativeLayout>
+
+    <!-- ===== TABS ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="#111111"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tabClasificacion"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Clasificación"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/tab_selected_indicator" />
+
+        <TextView
+            android:id="@+id/tabPartidos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Partido Jornada"
+            android:textColor="#999999"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <!-- ===== PANEL CLASIFICACIÓN ===== -->
+    <LinearLayout
+        android:id="@+id/panelClasificacion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <!-- Cabecera columnas fija -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="#1A1A1A"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <TextView android:layout_width="24dp" android:layout_height="match_parent"
+                android:text="" android:gravity="center"
+                android:textColor="#AAAAAA" android:textSize="11sp" />
+            <View android:layout_width="32dp" android:layout_height="match_parent" />
+            <TextView android:layout_width="0dp" android:layout_height="match_parent"
+                android:layout_weight="1" android:text="Club"
+                android:gravity="center_vertical" android:textColor="#AAAAAA"
+                android:textSize="11sp" android:paddingStart="4dp" />
+            <TextView android:layout_width="28dp" android:layout_height="match_parent"
+                android:text="PJ" android:gravity="center" android:textColor="#AAAAAA"
+                android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:layout_width="28dp" android:layout_height="match_parent"
+                android:text="V" android:gravity="center" android:textColor="#AAAAAA"
+                android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:layout_width="28dp" android:layout_height="match_parent"
+                android:text="E" android:gravity="center" android:textColor="#AAAAAA"
+                android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:layout_width="28dp" android:layout_height="match_parent"
+                android:text="D" android:gravity="center" android:textColor="#AAAAAA"
+                android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:layout_width="28dp" android:layout_height="match_parent"
+                android:text="GF" android:gravity="center" android:textColor="#AAAAAA"
+                android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:layout_width="28dp" android:layout_height="match_parent"
+                android:text="GC" android:gravity="center" android:textColor="#AAAAAA"
+                android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:layout_width="28dp" android:layout_height="match_parent"
+                android:text="DG" android:gravity="center" android:textColor="#AAAAAA"
+                android:textSize="11sp" android:textStyle="bold"/>
+            <TextView android:layout_width="34dp" android:layout_height="match_parent"
+                android:text="Pts" android:gravity="center" android:textColor="#FFFFFF"
+                android:textSize="11sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#333333" />
+
+        <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:background="#000000">
+            <LinearLayout
+                android:id="@+id/contenedorFilas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+    </LinearLayout>
+
+    <!-- ===== PANEL PARTIDOS ===== -->
+    <LinearLayout
+        android:id="@+id/panelPartidos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#1C1C1E"
+        android:visibility="gone">
+
+        <!-- Selector de jornada (botón rojo con flecha) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/btnSelectorJornada"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="↓  Jornada --"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:backgroundTint="#E2001A"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:stateListAnimator="@null" />
+
+        </LinearLayout>
+
+        <!-- Scroll con la lista de partidos -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/contenedorPartidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

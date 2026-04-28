@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootComparador"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!-- HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@android:drawable/ic_menu_revert"
+                android:tint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="COMPARADOR"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <!-- TÍTULO GRANDE -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="COMPARADOR DE JUGADORES"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="#FF4B4B"
+            android:layout_marginBottom="16dp" />
+
+        <!-- BUSCADOR 1 Y 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- JUGADOR 1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="4dp">
+
+                <Spinner
+                    android:id="@+id/spinnerLiga1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
+                <EditText
+                    android:id="@+id/etJugador1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="Añadir jugador"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#AAAAAA"                    android:backgroundTint="#FFFFFF"
+                    android:singleLine="true" />
+
+                <Button
+                    android:id="@+id/btnBuscar1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Buscar"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#9C27FF" />
+
+                <ListView
+                    android:id="@+id/listJugador1"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:visibility="gone"
+                    android:background="#111111" />
+
+            </LinearLayout>
+
+            <!-- JUGADOR 2 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="4dp">
+
+                <Spinner
+                    android:id="@+id/spinnerLiga2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
+                <EditText
+                    android:id="@+id/etJugador2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="Añadir jugador"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#AAAAAA"                    android:backgroundTint="#FFFFFF"
+                    android:singleLine="true" />
+
+                <Button
+                    android:id="@+id/btnBuscar2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Buscar"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#00BCD4" />
+
+                <ListView
+                    android:id="@+id/listJugador2"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:visibility="gone"
+                    android:background="#111111" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- TARJETAS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:id="@+id/cardJugador1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#17172A"
+                android:padding="10dp"
+                android:layout_marginEnd="4dp" />
+
+            <LinearLayout
+                android:id="@+id/cardJugador2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#17172A"
+                android:padding="10dp"
+                android:layout_marginStart="4dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

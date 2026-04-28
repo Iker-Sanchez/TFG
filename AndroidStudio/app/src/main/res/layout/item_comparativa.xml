@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/item_comparativa.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <!-- Valor local -->
+    <TextView
+        android:id="@+id/txtValorLocal"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="75%"
+        android:textColor="#4FC3F7"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <!-- Label central -->
+    <TextView
+        android:id="@+id/txtLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Forma"
+        android:textColor="#AAAAAA"
+        android:textSize="13sp"
+        android:gravity="center" />
+
+    <!-- Valor visitante -->
+    <TextView
+        android:id="@+id/txtValorVisitante"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="25%"
+        android:textColor="#4CAF50"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+</LinearLayout>
